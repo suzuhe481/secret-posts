@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1>Sign Up Form</h1>
+
+    <form action="" method="POST">
+      <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input type="text" name="first_name" />
+      </div>
+
+      <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input type="text" name="last_name" />
+      </div>
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" />
+      </div>
+
+      <div class="form-group">
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password" name="confirm_password" />
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select name="status" id="status">
+          <option disabled selected>Select Status</option>
+          <option value="Member">Member</option>
+          <option value="Member+">Member+</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="member_plus_password_container">
+        <label for="member_plus_password">Member+ Password</label>
+        <input
+          type="password"
+          name="member_plus_password"
+          id="member_plus_password"
+        />
+      </div>
+
+      <div class="form-group">
+        <button>Sign Up</button>
+      </div>
+    </form>
+
+    <script>
+      var statusDropdown = document.getElementById("status");
+      var member_plus_password_container = document.getElementById(
+        "member_plus_password_container"
+      );
+
+      const statusOnChangeHandler = () => {
+        console.log("test change");
+        console.log(statusDropdown.value);
+
+        if (statusDropdown.value === "Member+") {
+          member_plus_password_container.style.display = "block";
+        } else {
+          member_plus_password_container.style.display = "none";
+        }
+      };
+
+      statusOnChangeHandler();
+      statusDropdown.addEventListener("change", statusOnChangeHandler);
+    </script>
+  </body>
+</html>
