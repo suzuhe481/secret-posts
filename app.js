@@ -3,6 +3,14 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const mongoose = require("mongoose");
+require("dotenv").config();
+const bcrypt = require("bcryptjs");
+
+const User = require("./models/user");
 
 var indexRouter = require("./routes/index");
 var postRouter = require("./routes/post");
