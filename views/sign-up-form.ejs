@@ -10,37 +10,42 @@
     <form action="" method="POST">
       <div class="form-group">
         <label for="first_name">First Name</label>
-        <input type="text" name="first_name" />
+        <input type="text" name="first_name" required />
       </div>
 
       <div class="form-group">
         <label for="last_name">Last Name</label>
-        <input type="text" name="last_name" />
+        <input type="text" name="last_name" required />
       </div>
 
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" name="username" />
+        <input type="text" name="username" required />
       </div>
 
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" name="email" />
+        <input type="email" name="email" required />
       </div>
 
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" name="password" />
+        <input type="password" name="password" id="password" required />
       </div>
 
       <div class="form-group">
         <label for="confirm_password">Confirm Password</label>
-        <input type="password" name="confirm_password" />
+        <input
+          type="password"
+          name="confirm_password"
+          id="confirm_password"
+          required
+        />
       </div>
 
       <div class="form-group">
         <label for="status">Status</label>
-        <select name="status" id="status">
+        <select name="status" id="status" required>
           <option disabled selected>Select Status</option>
           <option value="Member">Member</option>
           <option value="Member+">Member+</option>
@@ -62,15 +67,13 @@
     </form>
 
     <script>
+      // Displays Member+ Password field when Member+ is selected in status dropdown.
       var statusDropdown = document.getElementById("status");
       var member_plus_password_container = document.getElementById(
         "member_plus_password_container"
       );
 
       const statusOnChangeHandler = () => {
-        console.log("test change");
-        console.log(statusDropdown.value);
-
         if (statusDropdown.value === "Member+") {
           member_plus_password_container.style.display = "block";
         } else {
@@ -80,6 +83,28 @@
 
       statusOnChangeHandler();
       statusDropdown.addEventListener("change", statusOnChangeHandler);
+    </script>
+
+    <script>
+      // Confirms if passwords match.
+      var password = document.getElementById("password");
+      var confirm_password = document.getElementById("confirm_password");
+
+      const checkPasswords = () => {
+        password.style.borderColor = "black";
+        confirm_password.style.borderColor = "black";
+
+        if (password.value === confirm_password.value) {
+          confirm_password.setCustomValidity("");
+        } else {
+          confirm_password.setCustomValidity("Passwords do not match");
+          password.style.borderColor = "red";
+          confirm_password.style.borderColor = "red";
+        }
+      };
+
+      password.addEventListener("change", checkPasswords);
+      confirm_password.addEventListener("change", checkPasswords);
     </script>
   </body>
 </html>
