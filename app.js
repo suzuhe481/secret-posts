@@ -59,6 +59,21 @@ passport.use(
   })
 );
 
+// Following 2 functions are used in the background.
+// Allows users to stay logged in by creating a cookie.
+// Defines the information that passport is looking for when it creates and decodes the cookies.
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
+});
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
