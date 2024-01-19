@@ -34,6 +34,31 @@ var app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+// Setting up the LocalStrategy.
+// Takes a username and password and tries to find the user in the DB and makes sure
+// the given password matches the user's password.
+// Authenticates the user and moves on if successful.
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
+    try {
+      const user = await User.findOne({ username: username });
+
+      if (!user) {
+        return done(null, false, { message: "Incorrect username" });
+      }
+
+      // Password comparison to use bcrypt's compare function.
+      const match = await bcrypt.compare(password, user.password);
+      if (!match) {
+        return done(null, false, { message: "Incorrect password" });
+      }
+      return done(null, user);
+    } catch (err) {
+      return done(err);
+    }
+  })
+);
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
