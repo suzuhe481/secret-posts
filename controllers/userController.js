@@ -7,3 +7,7 @@ const asyncHandler = require("express-async-handler");
 exports.user_detail = asyncHandler(async (req, res, next) => {
   res.render("index", { title: "Single User Details" });
 });
+
+exports.user_create_get = asyncHandler(async (req, res, next) => {
+  res.render("sign-up-form", { title: "Sign Up" });
+});
