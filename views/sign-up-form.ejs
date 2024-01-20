@@ -9,23 +9,27 @@
 
     <form action="" method="POST">
       <div class="form-group">
-        <label for="first_name">First Name</label>
-        <input type="text" name="first_name" required />
+        <label for="first_name">First Name (Will not be displayed)</label>
+        <input type="text" name="first_name" required value="<%= locals.user ===
+        undefined ? "" : user.first_name %>"/>
       </div>
 
       <div class="form-group">
-        <label for="last_name">Last Name</label>
-        <input type="text" name="last_name" required />
+        <label for="last_name">Last Name (Will not be displayed)</label>
+        <input type="text" name="last_name" required value="<%= locals.user ===
+        undefined ? "" : user.last_name %>"/>
       </div>
 
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" name="username" required />
+        <label for="username">Username (Will be displayed online)</label>
+        <input type="text" name="username" required value="<%= locals.user ===
+        undefined ? "" : user.username %>"/>
       </div>
 
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" name="email" required />
+        <input type="email" name="email" required value="<%= locals.user ===
+        undefined ? "" : user.email %>"/>
       </div>
 
       <div class="form-group">
@@ -46,9 +50,9 @@
       <div class="form-group">
         <label for="status">Status</label>
         <select name="status" id="status" required>
-          <option disabled selected>Select Status</option>
-          <option value="Member">Member</option>
-          <option value="Member+">Member+</option>
+          <option value="" disabled selected>Select Status</option>
+          <option value="Member" <%= locals.user === undefined ? "" : locals.user.status === "Member" ? "selected" : "" %>>Member</option>
+          <option value="Member+" <%= locals.user ===undefined ? "" : locals.user.status === "Member+" ? "selected" : "" %>>Member+</option>
         </select>
       </div>
 
