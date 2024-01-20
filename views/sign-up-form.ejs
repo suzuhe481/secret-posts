@@ -70,6 +70,21 @@
       </div>
     </form>
 
+    <% if (locals.errors) { %>
+    <div>
+      <% for( let i = 0; i < errors.length; i++ ) { %>
+      <li><%= errors[i].msg %></li>
+      <% } %>
+    </div>
+    <% } %> 
+    <% if (locals.customErrors) { %>
+    <div>
+      <% for( let i = 0; i < customErrors.length; i++ ) { %>
+      <li><%= customErrors[i] %></li>
+      <% } %>
+    </div>
+    <% } %>
+
     <script>
       // Displays Member+ Password field when Member+ is selected in status dropdown.
       var statusDropdown = document.getElementById("status");
