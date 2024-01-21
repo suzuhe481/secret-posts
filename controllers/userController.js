@@ -111,14 +111,14 @@ exports.user_create_post = [
         } else {
           // Adds hashed password to user object.
           user.password = hashedPassword;
+
+          // Save new user and redirect to home page.
+          await user.save();
+          res.redirect("/");
         }
       });
     } catch (err) {
       return next(err);
     }
-
-    // Save new user and redirect to home page.
-    await user.save();
-    res.redirect("/");
   }),
 ];
