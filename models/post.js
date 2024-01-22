@@ -20,5 +20,12 @@ const PostSchema = new Schema({
   },
 });
 
+// Virtual for formatted post date.
+PostSchema.virtual("date_formatted").get(function () {
+  return DateTime.fromJSDate(this.post_date).toLocaleString(
+    DateTime.DATETIME_MED_WITH_SECONDS
+  );
+});
+
 // Export model
 module.exports = mongoose.model("Post", PostSchema);
