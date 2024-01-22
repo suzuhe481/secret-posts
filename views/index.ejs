@@ -12,6 +12,13 @@
     <h2>Hello <%= currentUser.username %></h2>
     <a href="/log-out">Log Out</a>
 
+    <form action="/" method="POST">
+      <label for="post">New Post</label>
+      <textarea name="post" id="post"></textarea>
+
+      <button>Post</button>
+    </form>
+
     <% } else {%>
     <h1>Please log in</h1>
     <form action="/log-in" method="POST">
