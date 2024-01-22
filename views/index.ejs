@@ -32,6 +32,19 @@
     </form>
     <a href="/user/create">Sign Up</a>
     <a href="/user/admin-create">Admin Sign Up</a>
+    <% } %> 
+    
+    <p>Posts</p>
+    <% if (posts) { %>
+      <% for( let i = 0; i < posts.length; i++ ) { %>
+      <div>
+        <li>By: <%= posts[i].user %></li>
+        <li>Posted on: <%= posts[i].date_formatted %></li>
+        <li><%- posts[i].post %></li>
+      </div>
+      <% } %> 
+    <% } else { %>
+    <p>No posts</p>
     <% } %>
   </body>
 </html>
