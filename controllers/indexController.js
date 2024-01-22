@@ -25,9 +25,6 @@ exports.index_post = [
     // Extract the validation errors.
     const errors = validationResult(req);
 
-    // Get the current user.
-    const currUser = User.findOne({ id: req.user._id });
-
     // Get date and time at time of posting.
     const date = new Date().toISOString();
 
