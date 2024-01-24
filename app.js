@@ -34,6 +34,9 @@ var app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+// Using express-session middleware before passport initialization.
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+
 // Setting up the LocalStrategy.
 // Takes a username and password and tries to find the user in the DB and makes sure
 // the given password matches the user's password.
@@ -74,7 +77,6 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
