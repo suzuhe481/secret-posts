@@ -6,7 +6,6 @@ const index_controller = require("../controllers/indexController");
 // 3 ways to get to home page.
 // GET Home page
 router.get("/", index_controller.index);
-router.post("/", index_controller.index_post);
 
 // The following 2 GET methods redirect to the above route.
 router.get("/home", function (req, res, next) {
