@@ -8,3 +8,44 @@ const { body, validationResult } = require("express-validator");
 exports.post_detail = asyncHandler(async (req, res, next) => {
   res.render("index", { title: "Single Post Details" });
 });
+
+// Handles the creation of a new post.
+exports.post_create_post = [
+  // Validate form data
+  body("post", "Post must not be empty").trim().escape().isLength({ min: 1 }),
+
+  asyncHandler(async (req, res, next) => {
+    // Extract the validation errors.
+    const errors = validationResult(req);
+
+    // Get date and time at time of posting.
+    const date = new Date().toISOString();
+
+    // Create post object with given form data.
+    const post = new Post({
+      post: req.body.post,
+      post_date: date,
+      user: req.user,
+    });
+
+    // There are errors.
+    // Render form again with sanitized values and error messages.
+    if (!errors.isEmpty()) {
+      res.render("/", {
+        title: "Secret Posts",
+        errors: errors.array(),
+      });
+      return;
+    }
+    // Save post and add post to current user's posts.
+    else {
+      await post.save();
+
+      const filter = { _id: req.user._id };
+      const update = { $push: { posts: post } };
+      await User.findOneAndUpdate(filter, update, { new: true });
+
+      res.redirect("/");
+    }
+  }),
+];
