@@ -43,6 +43,11 @@
         <a href="<%= posts[i].url %>">
           <li><%- posts[i].post %></li>
         </a>
+        <% if (currentUser) { %>
+          <% if (currentUser.status === "Admin") { %>
+            <a href="/post/<%= posts[i].url %>/delete">Delete Post</a>
+            <% } %>
+        <% } %>
       </div>
       <% } %> 
     <% } else { %>
