@@ -59,3 +59,10 @@ exports.post_delete_get = asyncHandler(async (req, res, next) => {
     post: post,
   });
 });
+
+// Handles a post delete on POST.
+exports.post_delete_post = asyncHandler(async (req, res, next) => {
+  await Post.findByIdAndDelete(req.params.id).exec();
+
+  res.redirect("/");
+});
