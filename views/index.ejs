@@ -40,7 +40,9 @@
       <div>
         <li>By: <%= posts[i].user %></li>
         <li>Posted on: <%= posts[i].date_formatted %></li>
-        <li><%- posts[i].post %></li>
+        <a href="<%= posts[i].url %>">
+          <li><%- posts[i].post %></li>
+        </a>
       </div>
       <% } %> 
     <% } else { %>
