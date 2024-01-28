@@ -38,7 +38,16 @@
     <% if (posts) { %>
       <% for( let i = 0; i < posts.length; i++ ) { %>
       <div>
-        <li>By: <%= posts[i].user %></li>
+        <% if (currentUser) { %>
+          <% if (currentUser.status === "Member+" || currentUser.status === "Admin") { %>
+            <li>By: <%= posts[i].user.first_name %> <%= posts[i].user.last_name %></li>
+          <% } else { %>
+            <li>Anonymous</li>
+          <% } %>
+        <% } else { %>
+          <li>Anonymous</li>
+        <% } %>
+
         <li>Posted on: <%= posts[i].date_formatted %></li>
         <a href="<%= posts[i].url %>">
           <li><%- posts[i].post %></li>
