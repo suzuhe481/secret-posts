@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <a href="/">Home</a>
+
+    Post Detail
+
+    <div>
+      <li>By: <%= post.user %></li>
+      <li>Posted on: <%= post.date_formatted %></li>
+      <li><%- post.post %></li>
+    </div>
+
+    <%# Displays delete button only if post belongs to the current user or if the current user is an Admin. %>
+    <% if (currentUser) { %>
+      <% if (currentUser.id == post.user || currentUser.status === "Admin") { %>
+      <form method="POST" action="">
+        <button type="submit">Delete</button>
+      </form>
+      <% } %>
+    <% } %>
+  </body>
+</html>
