@@ -6,7 +6,7 @@ const { body, validationResult } = require("express-validator");
 
 // Gets the details for a single post.
 exports.post_detail = asyncHandler(async (req, res, next) => {
-  const post = await Post.findById(req.params.id).exec();
+  const post = await Post.findById(req.params.id).populate("user").exec();
 
   res.render("post/detail", { title: "Post Detail", post: post });
 });
