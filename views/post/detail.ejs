@@ -11,17 +11,19 @@
     Post Detail
 
     <div>
-      <li>By: <%= post.user %></li>
+      <% if (currentUser && (currentUser.id == post.user.id || currentUser.status === "Member+" || currentUser.status === "Admin")) { %>
+        <li>By: <%= post.user %></li>
+      <% } else { %>
+        <li>Anonymous</li>
+      <% } %>
       <li>Posted on: <%= post.date_formatted %></li>
       <li><%- post.post %></li>
     </div>
 
     <%# Displays delete button only if post belongs to the current user or if the current user is an Admin. %>
     <% if (currentUser) { %>
-      <% if (currentUser.id == post.user || currentUser.status === "Admin") { %>
-      <form method="POST" action="">
-        <button type="submit">Delete</button>
-      </form>
+      <% if (currentUser.id == post.user.id || currentUser.status === "Admin") { %>
+        <a href="<%= post.url %>/delete">Delete Post</a>
       <% } %>
     <% } %>
   </body>
