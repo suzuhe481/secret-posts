@@ -12,11 +12,15 @@
 
     <p>Want to delete this post?</p>
 
-    <div>
-      <li>By: <%= post.user %></li>
-      <li>Posted on: <%= post.date_formatted %></li>
-      <li><%- post.post %></li>
-    </div>
+    <% if (currentUser) { %>
+      <% if (currentUser.id == post.user || currentUser.status === "Admin") { %>
+        <div>
+          <li>By: <%= post.user %></li>
+          <li>Posted on: <%= post.date_formatted %></li>
+          <li><%- post.post %></li>
+        </div>
+      <% } %>
+    <% } %>
 
     <%# Displays delete confirmation form only if post belongs to the current user or if the current user is an Admin. %>
     <% if (currentUser) { %>
