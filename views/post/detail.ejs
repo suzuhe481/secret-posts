@@ -12,7 +12,7 @@
 
     <div>
       <% if (currentUser && (currentUser.id == post.user.id || currentUser.status === "Member+" || currentUser.status === "Admin")) { %>
-        <li>By: <%= post.user %></li>
+        <li>By: <%= post.user.full_name %></li>
       <% } else { %>
         <li>Anonymous</li>
       <% } %>
