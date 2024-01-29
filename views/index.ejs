@@ -54,7 +54,7 @@
         </a>
         <% if (currentUser) { %>
           <% if (currentUser.status === "Admin") { %>
-            <a href="/post/<%= posts[i].url %>/delete">Delete Post</a>
+            <a href="<%= posts[i].url %>/delete">Delete Post</a>
             <% } %>
         <% } %>
       </div>
