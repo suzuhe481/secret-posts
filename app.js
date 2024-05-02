@@ -38,28 +38,33 @@ app.set("view engine", "ejs");
 app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 
 // Setting up the LocalStrategy.
-// Takes a username and password and tries to find the user in the DB and makes sure
+// Takes an email and password and tries to find the user in the DB and makes sure
 // the given password matches the user's password.
 // Authenticates the user and moves on if successful.
+// Note: The object containing the "email" string is used to use the email instead of the
+// default username variable of LocalStrategy.
 passport.use(
-  new LocalStrategy(async (username, password, done) => {
-    try {
-      const user = await User.findOne({ username: username });
+  new LocalStrategy(
+    { usernameField: "email" },
+    async (email, password, done) => {
+      try {
+        const user = await User.findOne({ email: email });
 
-      if (!user) {
-        return done(null, false, { message: "Incorrect username" });
-      }
+        if (!user) {
+          return done(null, false, { message: "Incorrect email" });
+        }
 
-      // Password comparison to use bcrypt's compare function.
-      const match = await bcrypt.compare(password, user.password);
-      if (!match) {
-        return done(null, false, { message: "Incorrect password" });
+        // Password comparison to use bcrypt's compare function.
+        const match = await bcrypt.compare(password, user.password);
+        if (!match) {
+          return done(null, false, { message: "Incorrect password" });
+        }
+        return done(null, user);
+      } catch (err) {
+        return done(err);
       }
-      return done(null, user);
-    } catch (err) {
-      return done(err);
     }
-  })
+  )
 );
 
 // Following 2 functions are used in the background.
@@ -81,10 +86,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
-// Allows for access of the user variable as currentUser in all views without needing to manually
-// pass it into every controller it's needed.
+// Allows for the access of variables in all views without needing to manually pass it into every
+// controller it's needed.
+// req.user - The current user.
+// req.session.messages - Message from login error
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
+  res.locals.messages = req.session.messages;
   next();
 });
 
@@ -93,7 +101,8 @@ app.post(
   "/log-in",
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/",
+    failureRedirect: "/user/log-in",
+    failureMessage: "Incorrect email or password.",
   })
 );
 
