@@ -19,6 +19,10 @@ exports.user_detail = asyncHandler(async (req, res, next) => {
   });
 });
 
+exports.user_login_get = asyncHandler(async (req, res, next) => {
+  res.render("forms/log-in-form", { title: "Log in" });
+});
+
 // Displays the User create form on GET.
 exports.user_create_get = asyncHandler(async (req, res, next) => {
   res.render("sign-up-form", { title: "Sign Up" });
