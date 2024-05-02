@@ -136,7 +136,7 @@ exports.user_create_post = [
 
 // Displays the User ADMIN create form on GET.
 exports.admin_user_create_get = asyncHandler(async (req, res, next) => {
-  res.render("admin-sign-up-form", { title: "Admin Sign Up" });
+  res.render("forms/admin-sign-up-form", { title: "Admin Sign Up" });
 });
 
 // Handles User ADMIN create on POST.
