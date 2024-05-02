@@ -97,15 +97,13 @@ exports.user_create_post = [
       });
     }
 
-    // Checks if username already exists.
-    const usernameExists = await User.findOne({
-      username: req.body.username,
-    }).exec();
+    // Checks if email has already been used.
+    const emailIsTaken = await User.findOne({ email: req.body.email }).exec();
 
-    // Username already exists.
-    if (usernameExists) {
-      var usernameExistsError = "Username already exists";
-      customErrors.push(usernameExistsError);
+    // Email is taken.
+    if (emailIsTaken) {
+      var emailIsTakenError = "Email is already in use.";
+      customErrors.push(emailIsTakenError);
 
       // Render form again with custom error message.
       res.render("sign-up-form", {
