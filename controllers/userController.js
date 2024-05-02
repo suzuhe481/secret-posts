@@ -7,7 +7,16 @@ const bcrypt = require("bcryptjs");
 
 // Gets the details for a single user.
 exports.user_detail = asyncHandler(async (req, res, next) => {
-  res.render("index", { title: "Single User Details" });
+  const [user, userPosts] = await Promise.all([
+    User.findById(req.params.id).exec(),
+    Post.find({ user: req.params.id }).populate("user").exec(),
+  ]);
+
+  res.render("user/detail", {
+    title: "Single User Details",
+    user: user,
+    user_posts: userPosts,
+  });
 });
 
 // Displays the User create form on GET.
