@@ -47,7 +47,7 @@ UserSchema.virtual("full_name").get(function () {
 
 // Virtual for user's url.
 UserSchema.virtual("url").get(function () {
-  return `/post/${this._id}`;
+  return `/user/${this._id}`;
 });
 
 // Export module
