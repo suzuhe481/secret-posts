@@ -1,0 +1,20 @@
+<head>
+  <link rel="stylesheet" href="/stylesheets/partials/navbar.css" />
+</head>
+  <div class="nav-bar">
+    <div class="top-bar">
+      <% if (currentUser) { %>
+      <a class="profile no-highlight" href="<%= currentUser.url %>"
+        >My Profile</a
+      >
+      <% } else %> <% if (currentUser) { %>
+      <a href="/log-out" class="logout-button no-highlight">Log Out</a>
+      <% } else { %>
+      <a href="/user/log-in" class="create-account-button no-highlight"
+        >Sign In</a
+      >
+      <% } %>
+    </div>
+
+    <a href="/" class="title no-highlight">Secret Posts</a>
+  </div>
