@@ -243,3 +243,27 @@ exports.admin_user_create_post = [
     }
   }),
 ];
+
+// Handles a user delete on GET.
+exports.user_delete_get = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.params.id).exec();
+
+  res.render("user/delete", {
+    title: "Delete User",
+    user: user,
+  });
+});
+
+// Handles a user delete on POST.
+// Deletes the user's profile and their posts.
+exports.user_delete_post = asyncHandler(async (req, res, next) => {
+  const [user, userPosts] = await Promise.all([
+    User.findById(req.params.id).exec(),
+    Post.find({ user: req.params.id }).populate("user").exec(),
+  ]);
+
+  await Post.deleteMany({ user: req.params.id }).exec();
+  await User.findByIdAndDelete(req.params.id).exec();
+
+  res.redirect("/");
+});
