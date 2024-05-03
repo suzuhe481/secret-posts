@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <a href="/">Home</a>
+
+    Delete user page
+
+    <p>Want to delete this user?</p>
+
+    <% if (currentUser) { %>
+      <% if (currentUser.id == user.id || currentUser.status === "Admin") { %>
+        <div>
+          <li>User: <%= user.full_name %></li>
+        </div>
+      <% } %>
+    <% } %>
+
+    <%# Displays delete confirmation form only if the user being deleted is the current user  or if the current user is an Admin. %>
+    <% if (currentUser) { %>
+      <% if (currentUser.id == user.id || currentUser.status === "Admin") { %>
+      <form method="POST" action="">
+        <button type="submit">Delete</button>
+      </form>
+      <% } %>
+    <% } %>
+  </body>
+</html>
