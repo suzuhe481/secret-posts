@@ -18,4 +18,10 @@ router.post("/admin-create", user_controller.admin_user_create_post);
 // GET request for a single user.
 router.get("/:id", user_controller.user_detail);
 
+// GET/POST request to delete a user.
+router.get("/:id/delete", user_controller.user_delete_get);
+router.post("/:id/delete", user_controller.user_delete_post);
+
+
+
 module.exports = router;
