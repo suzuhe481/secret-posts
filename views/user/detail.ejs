@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1><%= user.full_name %>'s Profile</h1>
+    <% if (currentUser.id == user.id || currentUser.status === "Admin") { %>
+        <a href="<%= user.url %>/delete">Delete Profile</a>
+    <% } %>
+    <p>Posts</p>
+    <% if (user_posts) { %>
+      <% for( let i = 0; i < user_posts.length; i++ ) { %>
+      <div>
+        <% if (currentUser) { %>
+          <% if (currentUser.status === "Member+" || currentUser.status === "Admin" || currentUser.id == user_posts[i].user.id) { %>
+            <li>By: <a href="<%= user_posts[i].user.url %>"><%= user_posts[i].user.full_name %></a> </li>
+          <% } else { %>
+            <li>Anonymous</li>
+          <% } %>
+        <% } else { %>
+          <li>Anonymous</li>
+        <% } %>
+
+        <li>Posted on: <%= user_posts[i].date_formatted %></li>
+        <a href="<%= user_posts[i].url %>">
+          <li><%- user_posts[i].post %></li>
+        </a>
+        <% if (currentUser) { %>
+          <% if (currentUser.status === "Admin" || currentUser.id == user_posts[i].user.id) { %>
+            <a href="<%= user_posts[i].url %>/delete">Delete Post</a>
+            <% } %>
+        <% } %>
+      </div>
+      <% } %> 
+    <% } else { %>
+    <p>No posts</p>
+    <% } %>
+  </body>
+</html>
