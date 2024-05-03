@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/reset.css" />
+  </head>
+  <body>
+    <%- include("../partials/navbar"); %>
+    
+    <h1>Please Log in</h1>
+
+    <form action="/log-in" method="POST">
+      <label for="email">Email</label>
+      <input type="text" name="email" />
+
+      <label for="password">Password</label>
+      <input type="password" name="password" />
+
+      <button>Log In</button>
+    </form>
+
+    <% if (typeof messages != "undefined") { %>
+      <p> Error: <%= messages[0] %> </p>
+    <% } %>
+
+    <a href="/user/create">Create An Account</a>
+
+    <% if (locals.errors) { %>
+    <div>
+      <% for( let i = 0; i < errors.length; i++ ) { %>
+      <li><%= errors[i].msg %></li>
+      <% } %>
+    </div>
+    <% } %> 
+    <% if (locals.customErrors) { %>
+    <div>
+      <% for( let i = 0; i < customErrors.length; i++ ) { %>
+      <li><%= customErrors[i] %></li>
+      <% } %>
+    </div>
+    <% } %>
+  </body>
+</html>
