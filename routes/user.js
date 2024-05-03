@@ -8,6 +8,9 @@ const user_controller = require("../controllers/userController");
 router.get("/create", user_controller.user_create_get);
 router.post("/create", user_controller.user_create_post);
 
+// GET request for the user login page.
+router.get("/log-in", user_controller.user_login_get);
+
 // GET/POST route-handler callbacks to create an admin user
 router.get("/admin-create", user_controller.admin_user_create_get);
 router.post("/admin-create", user_controller.admin_user_create_post);
