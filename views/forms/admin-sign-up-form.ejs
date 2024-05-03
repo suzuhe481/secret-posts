@@ -3,33 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/reset.css" />
   </head>
   <body>
-    <a href="/">Home</a>
+    <%- include("../partials/navbar"); %>
 
     <h1>Admin Sign Up Form</h1>
 
     <form action="" method="POST">
       <div class="form-group">
-        <label for="first_name">First Name (Will not be displayed)</label>
+        <label for="first_name">First Name</label>
         <input type="text" name="first_name" required value="<%= locals.user ===
         undefined ? "" : user.first_name %>"/>
       </div>
 
       <div class="form-group">
-        <label for="last_name">Last Name (Will not be displayed)</label>
+        <label for="last_name">Last Name</label>
         <input type="text" name="last_name" required value="<%= locals.user ===
         undefined ? "" : user.last_name %>"/>
       </div>
 
       <div class="form-group">
-        <label for="username">Username (Will be displayed online)</label>
+        <label for="username">Username (Will be Displayed)</label>
         <input type="text" name="username" required value="<%= locals.user ===
         undefined ? "" : user.username %>"/>
       </div>
 
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">Email (Used to Sign In)</label>
         <input type="email" name="email" required value="<%= locals.user ===
         undefined ? "" : user.email %>"/>
       </div>
