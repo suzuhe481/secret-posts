@@ -9,7 +9,10 @@ const bcrypt = require("bcryptjs");
 exports.user_detail = asyncHandler(async (req, res, next) => {
   const [user, userPosts] = await Promise.all([
     User.findById(req.params.id).exec(),
-    Post.find({ user: req.params.id }).populate("user").exec(),
+    Post.find({ user: req.params.id })
+      .populate("user")
+      .sort({ post_date: -1 })
+      .exec(),
   ]);
 
   res.render("user/detail", {
