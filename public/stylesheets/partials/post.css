@@ -1,0 +1,70 @@
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  border: 1px solid black;
+  width: 80vw;
+
+  background-color: #feff9c;
+
+  min-height: 400px;
+}
+
+.author > *,
+.post > * {
+  text-decoration: none;
+  color: black;
+  list-style-type: none;
+}
+
+.date {
+  border-bottom: 1px solid black;
+}
+
+.message {
+  cursor: auto;
+}
+
+.delete-button {
+  border: 2px solid black;
+  border-radius: 12px;
+
+  font-size: 3rem;
+  text-align: center;
+
+  width: 50%;
+  bottom: 0;
+
+  padding: 6px 12px;
+
+  margin: 10px auto;
+  margin-top: auto;
+}
+
+/* Stylings for desktops */
+@media (pointer: fine) {
+  .posts-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: normal;
+  }
+
+  .post {
+    width: 200px;
+
+    min-height: 200px;
+  }
+
+  .delete-button {
+    font-size: 1.2rem;
+  }
+}
