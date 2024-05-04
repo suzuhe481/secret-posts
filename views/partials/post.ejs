@@ -1,0 +1,28 @@
+<head>
+  <link rel="stylesheet" href="/stylesheets/partials/post.css" />
+</head>
+<div class="post">
+  <div class="top">
+    <% if (currentUser) { %>
+      <% if (currentUser.status === "Member+" || currentUser.status === "Admin" || currentUser.id == post.user.id) { %>
+        <li class="author">By: <a href="<%= post.user.url %>"><%= post.user.username %></a> </li>
+      <% } else { %>
+        <li class="author">Anonymous</li>
+      <% } %>
+    <% } else { %>
+      <li class="author">Anonymous</li>
+    <% } %>
+    <li class="date">Posted on: <%= post.date_formatted %></li>
+  </div>
+
+  <a href="<%= post.url %>" class="message">
+    <li><%- post.post %></li>
+  </a>
+  
+  <% if (currentUser) { %>
+    <% if (currentUser.status === "Admin" || currentUser.id == post.user.id) { %>
+      <a class="delete-button" href="<%= post.url %>/delete">Delete Post</a>
+      <% } %>
+  <% } %>
+</div>
+
