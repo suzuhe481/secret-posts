@@ -1,0 +1,16 @@
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Stylings for desktops */
+@media (pointer: fine) {
+  .posts-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: normal;
+  }
+}
