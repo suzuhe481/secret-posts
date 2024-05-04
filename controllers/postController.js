@@ -54,7 +54,7 @@ exports.post_create_post = [
 
 // Handles a post delete on GET.
 exports.post_delete_get = asyncHandler(async (req, res, next) => {
-  const post = await Post.findById(req.params.id).exec();
+  const post = await Post.findById(req.params.id).populate("user").exec();
 
   res.render("post/delete", {
     title: "Delete Post",
