@@ -1,0 +1,105 @@
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* height: 100px; */
+
+  /* border-bottom: 1px solid black; */
+
+  /* width: 100%; */
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-around; */
+}
+
+.no-highlight {
+  /* Prevents text highlighting with cursor dragging */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.top-bar {
+  position: relative;
+  border-bottom: 1px solid black;
+  height: 100px;
+}
+
+.profile {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 12px 24px;
+
+  font-size: 2rem;
+
+  text-decoration: underline;
+  color: black;
+}
+
+.title {
+  /* position: relative; */
+  /* margin: 0 auto; */
+  text-align: center;
+  /* padding: 100px 25px; */
+  font-size: 6rem;
+  /* transform: translateY(100%); */
+  color: black;
+  text-decoration: none;
+}
+
+.logout-button,
+.create-account-button {
+  /* Centers on right side */
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  padding: 12px 24px;
+  /* margin-right: 25px; */
+
+  /* Centers text in button*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Removing link styles */
+  text-decoration: none;
+  color: black;
+
+  /* height: 200px; */
+  /* width: 200px; */
+  /* height: 2rem; */
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  background-color: #1a73e8;
+
+  font-size: 3rem;
+  font-family: sans-serif;
+  color: white;
+}
+
+/* Stylings for desktops */
+@media (pointer: fine) {
+  .title {
+    font-size: 5rem;
+    /* color: blue; */
+  }
+
+  .top-bar {
+    height: 60px;
+  }
+
+  .logout-button,
+  .create-account-button {
+    /* height: 100px; */
+    font-size: 1rem;
+    border-radius: 6px;
+  }
+}
