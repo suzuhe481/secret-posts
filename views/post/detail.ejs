@@ -3,21 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/reset.css">
     <title><%= title %></title>
   </head>
   <body>
-    <a href="/">Home</a>
+    <%- include("../partials/navbar"); %>
 
-    Post Detail
-
-    <div>
-      <% if (currentUser && (currentUser.id == post.user.id || currentUser.status === "Member+" || currentUser.status === "Admin")) { %>
-        <li>By: <%= post.user.full_name %></li>
-      <% } else { %>
-        <li>Anonymous</li>
-      <% } %>
-      <li>Posted on: <%= post.date_formatted %></li>
-      <li><%- post.post %></li>
+    <div class="posts-container">
+      <%- include("../partials/post"); %>
     </div>
 
     <%# Displays delete button only if post belongs to the current user or if the current user is an Admin. %>
