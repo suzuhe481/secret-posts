@@ -3,24 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/reset.css" />
     <title><%= title %></title>
   </head>
   <body>
-    <a href="/">Home</a>
-
-    Delete post page
+    <%- include("../partials/navbar"); %>
 
     <p>Want to delete this post?</p>
 
-    <% if (currentUser) { %>
-      <% if (currentUser.id == post.user || currentUser.status === "Admin") { %>
-        <div>
-          <li>By: <%= post.user %></li>
-          <li>Posted on: <%= post.date_formatted %></li>
-          <li><%- post.post %></li>
-        </div>
+    <div class="posts-container">
+      <% if (post) { %>
+          <%- include("../partials/post", {post: post}); %>
+      <% } else { %>
+        <p>No posts</p>
       <% } %>
-    <% } %>
+    </div>
 
     <%# Displays delete confirmation form only if post belongs to the current user or if the current user is an Admin. %>
     <% if (currentUser) { %>
