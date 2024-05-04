@@ -2,15 +2,15 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/index.css" />
+    <link rel="stylesheet" href="/stylesheets/reset.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-
+    <%- include("./partials/navbar"); %>
+    
     <% if (currentUser) { %>
-    <h2>Hello <%= currentUser.username %></h2>
-    <a href="/log-out">Log Out</a>
+    <p>Hello <%= currentUser.username %></p>
+    <p>Want to post something?</p>
 
     <form action="/post/create" method="POST">
       <label for="post">New Post</label>
@@ -19,48 +19,16 @@
       <button>Post</button>
     </form>
 
-    <% } else {%>
-    <h1>Please log in</h1>
-    <form action="/log-in" method="POST">
-      <label for="username">Username</label>
-      <input type="text" name="username" />
-
-      <label for="password">Password</label>
-      <input type="password" name="password" />
-
-      <button>Log In</button>
-    </form>
-    <a href="/user/create">Sign Up</a>
-    <a href="/user/admin-create">Admin Sign Up</a>
-    <% } %> 
-    
-    <p>Posts</p>
-    <% if (posts) { %>
-      <% for( let i = 0; i < posts.length; i++ ) { %>
-      <div>
-        <% if (currentUser) { %>
-          <% if (currentUser.status === "Member+" || currentUser.status === "Admin" || currentUser.id == posts[i].user.id) { %>
-            <li>By: <%= posts[i].user.full_name %></li>
-          <% } else { %>
-            <li>Anonymous</li>
-          <% } %>
-        <% } else { %>
-          <li>Anonymous</li>
-        <% } %>
-
-        <li>Posted on: <%= posts[i].date_formatted %></li>
-        <a href="<%= posts[i].url %>">
-          <li><%- posts[i].post %></li>
-        </a>
-        <% if (currentUser) { %>
-          <% if (currentUser.status === "Admin") { %>
-            <a href="<%= posts[i].url %>/delete">Delete Post</a>
-            <% } %>
-        <% } %>
-      </div>
-      <% } %> 
-    <% } else { %>
-    <p>No posts</p>
     <% } %>
+    
+    <div class="posts-container">
+      <% if (posts.length > 0) { %>
+        <% posts.forEach(function(post){ %>
+          <%- include("./partials/post", {post: post}); %>
+        <% }); %>
+      <% } else { %>
+      <p>No posts</p>
+      <% } %>
+    </div>
   </body>
 </html>
