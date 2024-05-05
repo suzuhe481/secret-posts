@@ -98,21 +98,40 @@
 
     <script>
       // Displays Member+ Password field when Member+ is selected in status dropdown.
-      var statusDropdown = document.getElementById("status");
+      const statusToggle = document.getElementById("status");
+
       var member_plus_password_container = document.getElementById(
         "member_plus_password_container"
       );
 
       const statusOnChangeHandler = () => {
-        if (statusDropdown.value === "Member+") {
-          member_plus_password_container.style.display = "block";
+        const isMemberPlus = statusToggle.checked;
+
+        if (isMemberPlus) {
+          member_plus_password_container.style.display = "flex";
         } else {
           member_plus_password_container.style.display = "none";
         }
       };
 
       statusOnChangeHandler();
-      statusDropdown.addEventListener("change", statusOnChangeHandler);
+      statusToggle.addEventListener("change", statusOnChangeHandler);
+    </script>
+
+    <script>
+      // Toggles Member Plus when clicking on the words besides the toggle switch.
+      const member = document.getElementById("member-toggle");
+      const memberPlus = document.getElementById("member-plus-toggle");
+      
+      // NOTE: statusToggle already declared in above script.
+      member.addEventListener("click", () => {
+        statusToggle.checked = false
+      });
+
+      memberPlus.addEventListener("click", () => {
+        statusToggle.checked = true;
+      });
+
     </script>
 
     <script>
