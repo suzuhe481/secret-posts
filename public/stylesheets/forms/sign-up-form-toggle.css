@@ -1,0 +1,98 @@
+.switch-container {
+  display: flex;
+  flex-direction: row;
+
+  font-size: 4rem;
+
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.switch-container p {
+  cursor: pointer;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+
+  width: 200px;
+  height: 80px;
+
+  filter: drop-shadow(0px 4px 2px gray);
+}
+
+.switch-container input {
+  border: 1px solid black;
+}
+
+input:checked + .member-plus {
+  font-size: 4rem;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 70px;
+  width: 70px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+/* Moves slider a set distance when clicked. */
+input:checked + .slider:before {
+  -webkit-transform: translateX(120px);
+  -ms-transform: translateX(120px);
+  transform: translateX(120px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Gives invisible border to toggle switch to not shift elements when tabbed to.*/
+.switch {
+  border: 2px solid transparent;
+}
+
+/* Gives toggles switch a border when tabbed to it. */
+.switch:has(input:focus) {
+  border: 2px solid black;
+}
