@@ -77,7 +77,7 @@ exports.user_create_post = [
     // There are errors.
     // Render form again with sanitized values and error messages.
     if (!errors.isEmpty()) {
-      res.render("sign-up-form", {
+      res.render("forms/sign-up-form", {
         title: "Sign Up",
         user: user,
         errors: errors.array(),
@@ -93,7 +93,7 @@ exports.user_create_post = [
       customErrors.push(incorrectMemberPlusError);
 
       // Render form again with custom error message.
-      res.render("sign-up-form", {
+      res.render("forms/sign-up-form", {
         title: "Sign Up",
         user: user,
         customErrors: customErrors,
@@ -109,7 +109,7 @@ exports.user_create_post = [
       customErrors.push(emailIsTakenError);
 
       // Render form again with custom error message.
-      res.render("sign-up-form", {
+      res.render("forms/sign-up-form", {
         title: "Sign Up",
         user: user,
         customErrors: customErrors,
