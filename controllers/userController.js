@@ -33,6 +33,22 @@ exports.user_create_get = asyncHandler(async (req, res, next) => {
 
 // Handles User create on POST.
 exports.user_create_post = [
+  // Checks the value of the status checkbox and sets the status of the body according to
+  // checkbox value.
+  // When checkbox is checked/not undefined, user will be a Member+.
+  // Else, user will be a Member.
+  (req, res, next) => {
+    console.log(req.body.status);
+    if (!(req.body.status instanceof Array)) {
+      if (typeof req.body.status !== "undefined") {
+        req.body.status = "Member+";
+      } else {
+        req.body.status = "Member";
+      }
+    }
+    next();
+  },
+
   // Validate form data.
   body("first_name", "Must must not be empty")
     .trim()
