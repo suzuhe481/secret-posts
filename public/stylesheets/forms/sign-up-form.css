@@ -46,3 +46,18 @@
 .form-group > button[type="submit"] {
   font-size: 4rem;
 }
+/* Stylings for desktops */
+@media (pointer: fine) and (min-width: 600px) {
+  .form {
+    width: 50vw;
+  }
+
+  .form-group label {
+    font-size: 1.3rem;
+  }
+
+  .form-group input {
+    font-size: 1.4rem;
+    padding: 5px 15px;
+  }
+}
