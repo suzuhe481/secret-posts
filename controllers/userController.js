@@ -203,7 +203,7 @@ exports.admin_user_create_post = [
     // There are errors.
     // Render form again with sanitized values and error messages.
     if (!errors.isEmpty()) {
-      res.render("admin-sign-up-form", {
+      res.render("forms/admin-sign-up-form", {
         title: "Admin Sign Up",
         user: user,
         errors: errors.array(),
@@ -216,7 +216,7 @@ exports.admin_user_create_post = [
       customErrors.push(incorrectAdminError);
 
       // Render form again with custom error message.
-      res.render("admin-sign-up-form", {
+      res.render("forms/admin-sign-up-form", {
         title: "Admin Sign Up",
         user: user,
         customErrors: customErrors,
@@ -234,7 +234,7 @@ exports.admin_user_create_post = [
       customErrors.push(usernameExistsError);
 
       // Render form again with custom error message.
-      res.render("admin-sign-up-form", {
+      res.render("forms/admin-sign-up-form", {
         title: "Admin Sign Up",
         user: user,
         customErrors: customErrors,
