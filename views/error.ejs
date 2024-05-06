@@ -1,5 +1,16 @@
-<a href="/">Back Home</a>
-<h1>This page does not exist</h1>
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<head>
+  <meta charset="UTF-8" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/reset.css" />
+</head>
+
+<%- include("./partials/navbar"); %>
+
+<div>
+  <h2>This page does not exist</h2>
+  <br />
+  <h1>Notes for devs</h1>
+  <h1><%= message %></h1>
+  <h2><%= error.status %></h2>
+  <pre><%= error.stack %></pre>
+</div>
