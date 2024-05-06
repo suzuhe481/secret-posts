@@ -79,9 +79,6 @@
       </div>
     </form>
 
-    <p>Are you an Admin?</p>
-    <a href="/user/admin-create">Create an account here</a>
-
     <% if (locals.errors) { %>
     <div>
       <% for( let i = 0; i < errors.length; i++ ) { %>
@@ -96,6 +93,11 @@
       <% } %>
     </div>
     <% } %>
+
+    <div class="admin-account-container">
+      <p>Are you an Admin?</p>
+      <a href="/user/admin-create">Create an account here</a>
+    </div>
 
     <script>
       // Displays Member+ Password field when Member+ is selected in status dropdown.
