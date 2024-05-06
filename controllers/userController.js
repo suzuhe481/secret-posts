@@ -38,7 +38,6 @@ exports.user_create_post = [
   // When checkbox is checked/not undefined, user will be a Member+.
   // Else, user will be a Member.
   (req, res, next) => {
-    console.log(req.body.status);
     if (!(req.body.status instanceof Array)) {
       if (typeof req.body.status !== "undefined") {
         req.body.status = "Member+";
