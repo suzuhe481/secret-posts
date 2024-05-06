@@ -34,7 +34,9 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
+
   padding: 12px 24px;
+  margin-left: 25px;
 
   font-size: 2rem;
 
@@ -42,9 +44,17 @@
   color: black;
 }
 
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .title {
   /* position: relative; */
   /* margin: 0 auto; */
+  margin: 20px 0;
+  padding: 10px 5px;
   text-align: center;
   /* padding: 100px 25px; */
   font-size: 6rem;
@@ -62,7 +72,7 @@
   transform: translateY(-50%);
 
   padding: 12px 24px;
-  /* margin-right: 25px; */
+  margin-right: 25px;
 
   /* Centers text in button*/
   display: flex;
