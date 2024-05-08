@@ -1,3 +1,56 @@
+/* Adds extra room to bottom of page. */
+body {
+  margin-bottom: 200px;
+}
+
+.admin-account-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+
+  justify-content: center;
+  align-items: center;
+
+  margin: 25px 0;
+}
+
+.admin-account-container > * {
+  font-size: 3rem;
+}
+
+.admin-account-container > a {
+  color: black;
+  text-decoration: none;
+
+  padding: 15px 10px;
+
+  border: 1px solid black;
+  border-radius: 15px;
+
+  background-color: rgb(0, 124, 207);
+  color: white;
+}
+
+.admin-account-container > a:hover {
+  background-color: rgb(0, 72, 121);
+}
+
+.form-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgb(0, 124, 207);
+  color: white;
+
+  font-size: 5rem;
+
+  height: 100px;
+  width: 100%;
+  margin: 0;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -7,7 +60,7 @@
   border: 1px solid black;
   padding: 30px;
 
-  width: 90vw;
+  width: 80vw;
   margin: 0 auto;
 
   background-color: #f2f2f2;
@@ -39,17 +92,19 @@
   border: 3px solid black;
 }
 
-.form-group:has(.switch-container) {
-  /* flex-direction: row; */
-}
-
 .form-group > button[type="submit"] {
+  border-radius: 15px;
   font-size: 4rem;
 }
+
+.form-group > button[type="submit"]:hover {
+  background-color: #ccc;
+}
+
 /* Stylings for desktops */
 @media (pointer: fine) and (min-width: 600px) {
   .form {
-    width: 50vw;
+    width: 40vw;
   }
 
   .form-group label {
