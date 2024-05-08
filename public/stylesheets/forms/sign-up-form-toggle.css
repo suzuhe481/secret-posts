@@ -96,3 +96,11 @@ input:checked + .slider:before {
 .switch:has(input:focus) {
   border: 2px solid black;
 }
+
+.switch-container .member {
+  color: black;
+}
+
+.switch-container .member-plus {
+  color: darkgray;
+}
