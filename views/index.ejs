@@ -9,15 +9,18 @@
     <%- include("./partials/navbar"); %>
     
     <% if (currentUser) { %>
-    <p>Hello <%= currentUser.username %></p>
-    <p>Want to post something?</p>
-
-    <form action="/post/create" method="POST">
-      <label for="post">New Post</label>
-      <textarea name="post" id="post"></textarea>
-
-      <button>Post</button>
-    </form>
+    <div class="post-create-section">
+      <div class="post-create-container">
+        <div class="post-prompt">
+          <p>Hello <%= currentUser.username %>,</p>
+          <p>Want to post something?</p>
+        </div>
+        <form action="/post/create" method="POST">
+          <textarea name="post" id="post"></textarea>
+          <button>Post</button>
+        </form>
+      </div>
+    </div>
 
     <% } %>
     
