@@ -107,13 +107,20 @@
         "member_plus_password_container"
       );
 
+      const member = document.getElementById("member-toggle");
+      const memberPlus = document.getElementById("member-plus-toggle");
+
       const statusOnChangeHandler = () => {
         const isMemberPlus = statusToggle.checked;
 
         if (isMemberPlus) {
           member_plus_password_container.style.display = "flex";
+          memberPlus.style.color = "black";
+          member.style.color = "darkgray";
         } else {
           member_plus_password_container.style.display = "none";
+          memberPlus.style.color = "darkgray";
+          member.style.color = "black";
         }
       };
 
@@ -123,10 +130,9 @@
 
     <script>
       // Toggles Member Plus when clicking on the words besides the toggle switch.
-      const member = document.getElementById("member-toggle");
-      const memberPlus = document.getElementById("member-plus-toggle");
 
-      // NOTE: statusToggle already declared in above script.
+      // Note: member and memberPlus already declared in above script.
+      // Note: statusToggle already declared in above script.
       member.addEventListener("click", () => {
         statusToggle.checked = false;
       });
