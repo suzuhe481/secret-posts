@@ -23,7 +23,15 @@ exports.user_detail = asyncHandler(async (req, res, next) => {
 });
 
 exports.user_login_get = asyncHandler(async (req, res, next) => {
-  res.render("forms/log-in-form", { title: "Log in" });
+  res.render("forms/log-in-form", {
+    title: "Log in",
+    errorMessage: req.session.messages,
+  });
+
+  // Without this, the error message will remain after changing pages after a failed login.
+  // Destroying the session will also destroy the message, which is alright
+  // since the user is not logged in yet.
+  req.session.destroy();
 });
 
 // Displays the User create form on GET.
