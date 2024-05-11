@@ -100,7 +100,7 @@ app.post(
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/user/log-in",
-    failureMessage: "Incorrect email or password.",
+    failureMessage: "Invalid email or password.",
   })
 );
 
