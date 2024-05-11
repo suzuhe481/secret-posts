@@ -13,10 +13,9 @@
       <div class="post-create-container">
         <div class="post-prompt">
           <p>Hello <%= currentUser.username %>,</p>
-          <p>Want to post something?</p>
         </div>
         <form action="/post/create" method="POST">
-          <textarea name="post" id="post"></textarea>
+          <textarea name="post" id="post" placeholder="Want to Post Something?"></textarea>
           <button>Post</button>
         </form>
       </div>
