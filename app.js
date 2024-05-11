@@ -89,10 +89,8 @@ app.use(express.urlencoded({ extended: false }));
 // Allows for the access of variables in all views without needing to manually pass it into every
 // controller it's needed.
 // req.user - The current user.
-// req.session.messages - Message from login error
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
-  res.locals.messages = req.session.messages;
   next();
 });
 
