@@ -73,6 +73,7 @@ exports.user_create_post = [
     .trim()
     .escape()
     .isEmail()
+    .toLowerCase()
     .isLength({ min: 1 }),
   body("password", "Password must be more than 3 characters")
     .trim()
@@ -184,6 +185,7 @@ exports.admin_user_create_post = [
     .trim()
     .escape()
     .isEmail()
+    .toLowerCase()
     .isLength({ min: 1 }),
   body("password", "Password must be more than 3 characters")
     .trim()
