@@ -2,7 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 25px;
+
+  filter: drop-shadow(2px 2px 2px gray);
 }
 
 .post {
@@ -11,13 +13,12 @@
   gap: 15px;
 
   border: 1px solid black;
-  width: 80vw;
+  margin: 0 20px;
+  padding: 15px;
+
+  min-height: 80vw;
 
   background-color: #feff9c;
-
-  min-height: 400px;
-
-  padding: 15px;
 }
 
 .author > *,
@@ -25,6 +26,8 @@
   text-decoration: none;
   color: black;
   list-style-type: none;
+
+  font-size: 1.2rem;
 }
 
 .date {
@@ -33,26 +36,50 @@
 
 .message {
   cursor: auto;
+  font-size: 2rem;
 }
 
-.delete-button {
-  border: 2px solid black;
-  border-radius: 12px;
+.post-actions-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
 
-  font-size: 3rem;
-  text-align: center;
-
-  width: 50%;
-  bottom: 0;
-
-  padding: 6px 12px;
-
-  margin: 10px auto;
   margin-top: auto;
 }
 
+.post-actions-container .view-post-button,
+.post-actions-container .delete-button {
+  border: 2px solid black;
+  border-radius: 12px;
+
+  text-decoration: none;
+  color: black;
+
+  font-size: 1.2rem;
+  text-align: center;
+
+  width: 50%;
+
+  padding: 6px 12px;
+}
+
+.post-actions-container .delete-button {
+  background-color: #d9534f;
+  color: white;
+}
+
+.post-actions-container .view-post-button:hover {
+  background-color: #b5b66f;
+}
+
+.post-actions-container .delete-button:hover {
+  background-color: #8b3532;
+}
+
 /* Stylings for desktops */
-@media (pointer: fine) {
+@media only screen and (min-device-width: 800px) {
   .posts-container {
     flex-direction: row;
     flex-wrap: wrap;
@@ -61,12 +88,22 @@
   }
 
   .post {
-    width: 200px;
+    width: 400px;
 
-    min-height: 200px;
+    min-height: 400px;
   }
 
-  .delete-button {
-    font-size: 1.2rem;
+  .author > *,
+  .post > * {
+    font-size: 2rem;
+  }
+
+  .message {
+    font-size: 2rem;
+  }
+
+  .post-actions-container .view-post-button,
+  .post-actions-container .delete-button {
+    font-size: 1.5rem;
   }
 }
