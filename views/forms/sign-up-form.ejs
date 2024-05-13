@@ -74,25 +74,25 @@
         />
       </div>
 
+      <% if (locals.errors) { %>
+        <div class="form-group">
+          <% for( let i = 0; i < errors.length; i++ ) { %>
+          <p class="error"> <%= errors[i].msg %> </p>
+          <% } %>
+        </div>
+        <% } %> 
+        <% if (locals.customErrors) { %>
+        <div class="form-group">
+          <% for( let i = 0; i < customErrors.length; i++ ) { %>
+          <p class="error"> <%= customErrors[i] %> </p>
+          <% } %>
+        </div>
+        <% } %>
+
       <div class="form-group">
         <button type="submit">Register</button>
       </div>
     </form>
-
-    <% if (locals.errors) { %>
-    <div>
-      <% for( let i = 0; i < errors.length; i++ ) { %>
-      <li><%= errors[i].msg %></li>
-      <% } %>
-    </div>
-    <% } %> 
-    <% if (locals.customErrors) { %>
-    <div>
-      <% for( let i = 0; i < customErrors.length; i++ ) { %>
-      <li><%= customErrors[i] %></li>
-      <% } %>
-    </div>
-    <% } %>
 
     <div class="admin-account-container">
       <p>Are you an Admin?</p>
