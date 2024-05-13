@@ -11,10 +11,12 @@
   <body>
     <%- include("../partials/navbar"); %>
 
-    <h1><%= user.username %>'s Profile</h1>
-    <% if (currentUser.id == user.id || currentUser.status === "Admin") { %>
-        <a href="<%= user.url %>/delete">Delete Profile</a>
-    <% } %>
+    <div class="username-container">
+      <h1 class="username"><%= user.username %>'s Profile</h1>
+      <% if (currentUser.id == user.id || currentUser.status === "Admin") { %>
+          <a class="delete-button" href="<%= user.url %>/delete">Delete This Account</a>
+      <% } %>
+    </div>
     
     <div class="posts-container">
       <% if (user_posts.length > 0) { %>
