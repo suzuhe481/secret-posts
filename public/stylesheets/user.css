@@ -1,0 +1,24 @@
+.username-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px 0;
+}
+
+.username-container > .username {
+  font-size: 2rem;
+}
+
+.username-container > .delete-button {
+  font-size: 1.2rem;
+}
+
+.posts-container {
+  margin-bottom: 60px;
+}
+
+/* Stylings for desktops */
+@media only screen and (min-device-width: 800px) {
+}
