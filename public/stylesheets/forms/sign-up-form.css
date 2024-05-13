@@ -3,6 +3,77 @@ body {
   margin-bottom: 200px;
 }
 
+.form-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background-color: rgb(0, 124, 207);
+  color: white;
+
+  font-size: 2rem;
+
+  height: 80px;
+  width: 100%;
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 50px;
+
+  border: 1px solid black;
+  padding: 30px;
+
+  width: 70vw;
+  margin: 0 auto;
+
+  background-color: #f2f2f2;
+  filter: drop-shadow(0px 4px 2px gray);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 1.5rem;
+  gap: 10px;
+}
+
+.form-group label {
+  font-size: 1.2rem;
+}
+
+.form-group input {
+  height: 3rem;
+  font-size: 1.5rem;
+
+  padding: 0 5px;
+
+  border: 3px solid #ccc;
+  border-radius: 4px;
+
+  filter: drop-shadow(0px 1px 2px gray);
+}
+
+/* Highlights focused input. */
+.form-group input:focus {
+  border: 3px solid black;
+}
+
+.form-group > button[type="submit"] {
+  border-radius: 15px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.form-group > button[type="submit"]:hover {
+  background-color: #ccc;
+}
+
 .admin-account-container {
   display: flex;
   flex-direction: column;
@@ -16,7 +87,7 @@ body {
 }
 
 .admin-account-container > * {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .admin-account-container > a {
@@ -36,83 +107,33 @@ body {
   background-color: rgb(0, 72, 121);
 }
 
-.form-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: rgb(0, 124, 207);
-  color: white;
-
-  font-size: 5rem;
-
-  height: 100px;
-  width: 100%;
-  margin: 0;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-
-  gap: 50px;
-
-  border: 1px solid black;
-  padding: 30px;
-
-  width: 80vw;
-  margin: 0 auto;
-
-  background-color: #f2f2f2;
-  filter: drop-shadow(0px 4px 2px gray);
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-
-  font-size: 3rem;
-  gap: 15px;
-}
-
-.form-group input {
-  height: 3rem;
-  font-size: 3rem;
-
-  padding: 20px;
-
-  border: 3px solid #ccc;
-  border-radius: 4px;
-
-  filter: drop-shadow(0px 1px 2px gray);
-}
-
-/* Highlights focused input. */
-.form-group input:focus {
-  border: 3px solid black;
-}
-
-.form-group > button[type="submit"] {
-  border-radius: 15px;
-  font-size: 4rem;
-}
-
-.form-group > button[type="submit"]:hover {
-  background-color: #ccc;
+.form-group > .error {
+  font-size: 2rem;
 }
 
 /* Stylings for desktops */
-@media (pointer: fine) and (min-width: 600px) {
+/* @media (pointer: fine) and (min-width: 600px) { */
+@media only screen and (min-device-width: 800px) {
   .form {
     width: 40vw;
+
+    gap: 40px;
+  }
+
+  .form-title {
+    font-size: 3rem;
   }
 
   .form-group label {
-    font-size: 1.3rem;
+    font-size: 2rem;
   }
 
   .form-group input {
     font-size: 1.4rem;
     padding: 5px 15px;
+  }
+
+  .form-group > .error {
+    font-size: 2rem;
   }
 }
