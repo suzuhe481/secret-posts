@@ -28,16 +28,15 @@
         </form>
       </div>
     </div>
-
     <% } %>
     
     <div class="posts-container">
       <% if (posts.length > 0) { %>
-        <% posts.forEach(function(post){ %>
+        <% posts.forEach(function(post) { %>
           <%- include("./partials/post", {post: post}); %>
         <% }); %>
       <% } else { %>
-      <p>No posts</p>
+        <p>No posts</p>
       <% } %>
     </div>
 
