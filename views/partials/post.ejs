@@ -18,11 +18,20 @@
   <a href="<%= post.url %>" class="message">
     <li><%- post.post %></li>
   </a>
-  
-  <% if (currentUser) { %>
-    <% if (currentUser.status === "Admin" || currentUser.id == post.user.id) { %>
-      <a class="delete-button" href="<%= post.url %>/delete">Delete Post</a>
+
+  <div class="post-actions-container">
+    <% if (typeof isViewPostPage === "undefined") { %>
+      <a class="view-post-button" href="<%= post.url %>">View Post</a>
+    <% } %>
+
+    <% if (currentUser) { %>
+      <% if (typeof isDeletePage === "undefined") { %>
+        <% if (currentUser.status === "Admin" || currentUser.id == post.user.id) { %>
+          <a class="delete-button" href="<%= post.url %>/delete">Delete Post</a>
+          <% } %>
       <% } %>
-  <% } %>
+    <% } %>
+
+  </div>
 </div>
 
