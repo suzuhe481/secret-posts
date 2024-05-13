@@ -10,25 +10,22 @@
   <body>
     <%- include("../partials/navbar"); %>
 
-    Delete user page
-
-    <p>Want to delete this user?</p>
-
-    <% if (currentUser) { %>
-      <% if (currentUser.id == user.id || currentUser.status === "Admin") { %>
-        <div>
-          <li>User: <%= user.username %></li>
-        </div>
+    <div class="container">
+      <p class="delete-prompt">Want to delete this user?</p>
+      <p class="delete-prompt">This will delete all of this user's posts.</p>
+      <% if (currentUser) { %>
+        <% if (currentUser.id == user.id || currentUser.status === "Admin") { %>
+            <p class="username">User: <%= user.username %></p>
+        <% } %>
       <% } %>
-    <% } %>
-
-    <%# Displays delete confirmation form only if the user being deleted is the current user  or if the current user is an Admin. %>
-    <% if (currentUser) { %>
-      <% if (currentUser.id == user.id || currentUser.status === "Admin") { %>
-      <form method="POST" action="">
-        <button type="submit">Delete</button>
-      </form>
+      <%# Displays delete confirmation form only if the user being deleted is the current user  or if the current user is an Admin. %>
+      <% if (currentUser) { %>
+        <% if (currentUser.id == user.id || currentUser.status === "Admin") { %>
+        <form method="POST" action="">
+          <button type="submit">Permanantly Delete</button>
+        </form>
+        <% } %>
       <% } %>
-    <% } %>
+    </div>
   </body>
 </html>
