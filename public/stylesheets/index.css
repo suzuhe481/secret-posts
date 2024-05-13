@@ -13,12 +13,12 @@
   justify-content: center;
   align-items: center;
 
-  margin: 25px 0;
+  margin-bottom: 25px;
 }
 
 .post-prompt {
-  font-size: 3rem;
-  padding: 30px 0;
+  font-size: 2rem;
+  padding: 20px 0;
 }
 
 .post-create-container form {
@@ -27,28 +27,35 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-
-  font-size: 4rem;
 }
 
 .post-create-container > form > textarea {
-  width: 800px;
-  height: 400px;
   border: 1px solid black;
+  width: 80vw;
+  min-height: 100px;
 
-  font-size: 2rem;
+  font-size: 1.2rem;
   resize: vertical;
-  padding: 5px;
+  padding: 15px;
 }
 
 /* The post button */
 .post-create-container > form > button {
-  padding: 15px 7px;
+  padding: 8px 4px;
   border-radius: 15px;
-  width: 50%;
-  font-size: 3rem;
+
+  width: 40%;
+  font-size: 1.4rem;
+
   background-color: #1a73e8;
   color: white;
+
+  cursor: pointer;
+}
+
+/* The post button on hover*/
+.post-create-container > form > button:hover {
+  background-color: #1250a0;
 }
 
 .posts-container {
@@ -56,14 +63,32 @@
   flex-direction: column;
   align-items: center;
   gap: 15px;
+
+  margin-bottom: 30px;
 }
 
 /* Stylings for desktops */
-@media (pointer: fine) {
+/* @media (pointer: fine) { */
+@media only screen and (min-device-width: 800px) {
   .posts-container {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: normal;
+  }
+
+  .post-prompt {
+    font-size: 2.2rem;
+  }
+
+  .post-create-container > form > textarea {
+    width: 50vw;
+    font-size: 2rem;
+  }
+
+  /* The post button */
+  .post-create-container > form > button {
+    width: 30%;
+    font-size: 2rem;
   }
 }
