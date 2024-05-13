@@ -24,14 +24,16 @@
         <input type="password" name="password" />
       </div>
 
+      <% if (typeof errorMessage != "undefined") { %>
+        <div class="form-group">
+          <p class="error"> <%= errorMessage[0] %> </p>
+        </div>
+      <% } %>
+
       <div class="form-group">
         <button type="submit">Log In</button>
       </div>
     </form>
-
-    <% if (typeof messages != "undefined") { %>
-      <p> Error: <%= messages[0] %> </p>
-    <% } %>
 
     <div class="account-create-container">
       <p>Need an account?</p>
@@ -39,16 +41,16 @@
     </div>
 
     <% if (locals.errors) { %>
-    <div>
+    <div class="form-group">
       <% for( let i = 0; i < errors.length; i++ ) { %>
-      <li><%= errors[i].msg %></li>
+        <p class="error"> <%= errors[i].msg %> </p>
       <% } %>
     </div>
     <% } %> 
     <% if (locals.customErrors) { %>
-    <div>
+    <div class="form-group">
       <% for( let i = 0; i < customErrors.length; i++ ) { %>
-      <li><%= customErrors[i] %></li>
+        <p class="error"> <%= errors[i].msg %> </p>
       <% } %>
     </div>
     <% } %>
