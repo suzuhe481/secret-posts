@@ -62,9 +62,12 @@ exports.post_create_post = [
 exports.post_delete_get = asyncHandler(async (req, res, next) => {
   const post = await Post.findById(req.params.id).populate("user").exec();
 
+  const isDeletePage = true;
+
   res.render("post/delete", {
     title: "Delete Post",
     post: post,
+    isDeletePage: isDeletePage,
   });
 });
 
