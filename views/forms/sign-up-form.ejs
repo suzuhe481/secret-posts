@@ -135,10 +135,12 @@
       // Note: statusToggle already declared in above script.
       member.addEventListener("click", () => {
         statusToggle.checked = false;
+        statusOnChangeHandler();
       });
 
       memberPlus.addEventListener("click", () => {
         statusToggle.checked = true;
+        statusOnChangeHandler();
       });
     </script>
 
