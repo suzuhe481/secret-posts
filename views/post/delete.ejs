@@ -11,7 +11,18 @@
   <body>
     <%- include("../partials/navbar"); %>
 
-    <p>Want to delete this post?</p>
+    <div class="prompt-container">
+      <p class="delete-prompt">Are you sure you want to delete this post?</p>
+    </div>
+
+    <%# Displays delete confirmation form only if post belongs to the current user or if the current user is an Admin. %>
+    <% if (currentUser) { %>
+      <% if (currentUser.id == post.user || currentUser.status === "Admin") { %>
+      <form method="POST" action="" class="form">
+        <button type="submit">Permenantly Delete</button>
+      </form>
+      <% } %>
+    <% } %>
 
     <div class="posts-container">
       <% if (post) { %>
@@ -20,14 +31,5 @@
         <p>No posts</p>
       <% } %>
     </div>
-
-    <%# Displays delete confirmation form only if post belongs to the current user or if the current user is an Admin. %>
-    <% if (currentUser) { %>
-      <% if (currentUser.id == post.user || currentUser.status === "Admin") { %>
-      <form method="POST" action="">
-        <button type="submit">Delete</button>
-      </form>
-      <% } %>
-    <% } %>
   </body>
 </html>
