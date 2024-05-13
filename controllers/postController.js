@@ -8,7 +8,13 @@ const { body, validationResult } = require("express-validator");
 exports.post_detail = asyncHandler(async (req, res, next) => {
   const post = await Post.findById(req.params.id).populate("user").exec();
 
-  res.render("post/detail", { title: "Post Detail", post: post });
+  const isViewPostPage = true;
+
+  res.render("post/detail", {
+    title: "Post Detail",
+    post: post,
+    isViewPostPage: isViewPostPage,
+  });
 });
 
 // Handles the creation of a new post.
