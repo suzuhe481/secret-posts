@@ -17,7 +17,13 @@
           <p>Hello <%= currentUser.username %>,</p>
         </div>
         <form action="/post/create" method="POST">
-          <textarea name="post" id="post" placeholder="Want to Post Something?"></textarea>
+          <textarea
+            name="post"
+            id="post"
+            placeholder="Want to Post Something?"
+            required
+            oninput="autoSize(this)"
+          ></textarea>
           <button>Post</button>
         </form>
       </div>
