@@ -6,12 +6,12 @@
   <div class="top-bar">
     <% if (currentUser) { %>
     <a class="profile no-highlight" href="<%= currentUser.url %>">My Profile</a>
-    <% } else %> <% if (currentUser) { %>
-    <a href="/log-out" class="logout-button no-highlight">Log Out</a>
+    <% }  %> 
+
+    <% if (currentUser) { %>
+      <a href="/log-out" class="logout-button no-highlight">Log Out</a>
     <% } else { %>
-    <a href="/user/log-in" class="create-account-button no-highlight"
-      >Sign In</a
-    >
+      <a href="/user/log-in" class="sign-in-button no-highlight">Sign In</a>
     <% } %>
   </div>
 
