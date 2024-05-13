@@ -1,0 +1,45 @@
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px 0;
+}
+
+form > button {
+  font-size: 2rem;
+  background-color: #d9534f;
+  color: white;
+
+  padding: 12px 24px;
+  border-radius: 15px;
+}
+
+form > button:hover {
+  background-color: #8b3532;
+}
+
+.prompt-contiainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100px;
+}
+
+.delete-prompt {
+  color: red;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.posts-container {
+  margin-bottom: 60px;
+}
+
+/* Stylings for desktops */
+@media only screen and (min-device-width: 800px) {
+  .delete-prompt {
+    font-size: 3rem;
+  }
+}
