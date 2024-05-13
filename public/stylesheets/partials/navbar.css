@@ -1,19 +1,13 @@
 .nav-bar {
   display: flex;
   flex-direction: column;
-  position: relative;
-  /* height: 100px; */
+  justify-content: center;
 
-  /* border-bottom: 1px solid black; */
-
-  /* width: 100%; */
-  /* display: flex;
-  flex-direction: row;
-  justify-content: space-around; */
+  width: 100%;
 }
 
+/* Prevents text highlighting with cursor dragging */
 .no-highlight {
-  /* Prevents text highlighting with cursor dragging */
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -26,7 +20,7 @@
 .top-bar {
   position: relative;
   border-bottom: 1px solid black;
-  height: 100px;
+  height: 80px;
 }
 
 .profile {
@@ -35,36 +29,16 @@
   top: 50%;
   transform: translateY(-50%);
 
-  padding: 12px 24px;
-  margin-left: 25px;
+  margin-left: 20px;
 
-  font-size: 2rem;
+  font-size: 1.5rem;
 
   text-decoration: underline;
   color: black;
 }
 
-.title-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.title {
-  /* position: relative; */
-  /* margin: 0 auto; */
-  margin: 20px 0;
-  padding: 10px 5px;
-  text-align: center;
-  /* padding: 100px 25px; */
-  font-size: 6rem;
-  /* transform: translateY(100%); */
-  color: black;
-  text-decoration: none;
-}
-
 .logout-button,
-.create-account-button {
+.sign-in-button {
   /* Centers on right side */
   position: absolute;
   right: 0;
@@ -72,44 +46,62 @@
   transform: translateY(-50%);
 
   padding: 12px 24px;
-  margin-right: 25px;
+  margin-right: 20px;
 
-  /* Centers text in button*/
+  /* Centers text in button */
   display: flex;
   justify-content: center;
   align-items: center;
 
   /* Removing link styles */
   text-decoration: none;
-  color: black;
-
-  /* height: 200px; */
-  /* width: 200px; */
-  /* height: 2rem; */
-  /* border: 1px solid black; */
-  border-radius: 10px;
+  color: white;
   background-color: #1a73e8;
 
-  font-size: 3rem;
+  border-radius: 10px;
+
+  font-size: 1.5rem;
   font-family: sans-serif;
-  color: white;
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 80px;
+}
+
+.title {
+  padding: 10px 5px;
+  text-align: center;
+
+  color: black;
+
+  font-size: 3rem;
+  text-decoration: none;
 }
 
 /* Stylings for desktops */
-@media (pointer: fine) {
-  .title {
-    font-size: 5rem;
-    /* color: blue; */
+@media only screen and (min-device-width: 800px) {
+  .top-bar {
+    height: 100px;
   }
 
-  .top-bar {
-    height: 60px;
+  .profile {
+    font-size: 2rem;
   }
 
   .logout-button,
-  .create-account-button {
-    /* height: 100px; */
-    font-size: 1rem;
-    border-radius: 6px;
+  .sign-in-button {
+    font-size: 2rem;
+  }
+
+  .title-container {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 5rem;
   }
 }
